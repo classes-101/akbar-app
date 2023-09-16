@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('SCM') {
+            steps {
+                git 'https://github.com/classes-101/akbar-app.git'
+            }
+        }
+        stage('docker build') {
+            steps {
+                sh 'sudo docker build -t jilu407/akbar-app:$BUILD_NUMBER . '
+            }
+        }
+    }
+}
