@@ -1,0 +1,6 @@
+---
+- name: calling role playbook
+  hosts: all
+  become: yes
+  roles:
+    - r-play

@@ -1,0 +1,21 @@
+---
+- name: error handlers
+  hosts: all
+  become: yes
+  tasks:
+    - block: 
+        - name: install tomcat
+          yum:
+            name: tomcat8
+            state: present
+      rescue:
+        - name: install tomcat 9 version
+          yum:
+            name: tomcat9
+            state: present
+      always:
+        - name: restart
+          service:
+            name: tomcat
+            state: restart
+              

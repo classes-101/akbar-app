@@ -1,0 +1,6 @@
+---
+- name: install with with include module
+  yum:
+    name: httpd
+    state: absent
+

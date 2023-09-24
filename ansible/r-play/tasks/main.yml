@@ -1,0 +1,9 @@
+---
+- name: call child playbook
+  include: "{{item}}"
+  with_items: 
+    - inc-install.yml
+    - inc-start.yml
+    - inc-copy.yml
+    - inc-service.yml
+    - inc-hand.yml

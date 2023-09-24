@@ -1,0 +1,12 @@
+---
+- name: call all child playbooks
+  hosts: all
+  become: yes
+  tasks:
+    - name: call child playbook
+      include: "{{item}}"
+      with_items: 
+        - inc-install.yml
+        - inc-start.yml
+        - inc-copy.yml
+        - inc-service.yml

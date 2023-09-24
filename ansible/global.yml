@@ -1,0 +1,23 @@
+---
+- name: first playbook
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: install httpd software
+      yum:
+        name: "{{a}}"
+        state: "{{b}}"
+    - name: start web server
+      service:
+        name: "{{a}}"
+        state: "{{c}}"
+    - name: copying the files
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html
+    - name: restart server
+      service:
+        name: "{{a}}"
+        state: restarted
+

@@ -1,0 +1,14 @@
+---
+- name: loopr playbook
+  hosts: all
+  become: yes
+  tasks:
+    - name: install multiple softwares
+      yum:
+        name: "{{item}}"
+        state: absent
+      with_items:
+        - httpd
+        - git
+        - tree
+
